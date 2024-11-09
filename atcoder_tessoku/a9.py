@@ -1,4 +1,4 @@
-# test = open("../atcoder_tessoku-test_case/a9/test01.txt", mode="r", encoding="utf-8")
+# test = open("./atcoder_tessoku-test_case/a9/test01.txt", mode="r", encoding="utf-8")
 # H, W, N = map(int, test.readline().split())
 
 # H, W, N = map(int, input().split())
