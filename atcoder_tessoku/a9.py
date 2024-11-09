@@ -28,6 +28,7 @@
 
 
 # ========= with itertools =========
+
 import itertools
 
 H, W, N = map(int, input().split())
