@@ -1,7 +1,3 @@
-# with open("./atcoder_tessoku-test_case/a18/04_subtask2_random01.txt", mode="r", encoding="utf-8") as file:
-#     N, S = map(int, file.readline().split())
-#     A = list(map(int, file.readline().split()))
-
 # import sys
 
 # N, S = map(int, input().split())
@@ -26,13 +22,15 @@
 
 # print("No")
 
-# ==== なにこれ ====
+# ==== ビットDPによる解法 ====
 
 N,S = map(int,input().split())
 A = [int(i) for i in input().split()]
 
 x = 1<<S
+print(x)
 for a in A:
     x |= x>>a
+    print(x)
     
 print('Yes') if x&1 else print('No')
