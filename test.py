@@ -1,3 +1,4 @@
-print([1,2] + [3,4])
-
-print(max([1,2,3,4,5]))
+x = 1 << 3
+print(x)
+x |= 2
+print(x)
