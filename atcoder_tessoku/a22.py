@@ -1,4 +1,5 @@
-# row7が間違っている理由
+# dpの初期設定で間違えた理由
+# 誤) dp = [0] * (N+1)
 
 # 以下は一例です。たとえば次のテストケースを考えてみます。
 
@@ -26,14 +27,32 @@
 # このようなテストケースでは、最初のコードは「到達不可能なマス2」を経由した不正な更新を行い、
 # それが特定の状況下で最終的なスコアを誤った値にしてしまいます。それによってジャッジで不正解となるケースが発生します。
 
+# 修正版のプログラム
+# 到達不可な場合を場合分けするロジックを追加
+def main1():
+    N = int(input())
+
+    A = list(map(int,input().split()))
+    B = list(map(int,input().split()))
+
+    dp = [0] * (N+1)
+    activity_tracking = set([1])
+
+    for i in range(1, N):
+        if i not in activity_tracking:
+            continue
+        activity_tracking.add(A[i-1])
+        activity_tracking.add(B[i-1])
+        dp[A[i-1]] = max(dp[A[i-1]], dp[i]+100)
+        dp[B[i-1]] = max(dp[B[i-1]], dp[i]+150)
+        
+    print(dp[N])
 
 def main():
     N = int(input())
 
     A = list(map(int,input().split()))
     B = list(map(int,input().split()))
-
-    # dp = [0] * (N+1)
  
     dp = [ -(10 ** 9) ] * (N + 1)
     dp[1] = 0
@@ -45,4 +64,4 @@ def main():
     print(dp[N])
 
 if __name__=='__main__':
-    main()
+    main1()
