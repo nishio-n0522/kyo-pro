@@ -13,7 +13,6 @@ def main():
     max_num = convert_2to10([1] * N)
     dp = [[10 ** 9 for _ in range(max_num+1)]] * (M+1)
     dp[0][0] = 0
-    dp[-1][-1] = 0
 
     for i in range(1, M+1):
         c = list(map(int, input().split()))
@@ -22,12 +21,10 @@ def main():
             S = j | available_items
             dp[i][S] = min(dp[i-1][S], dp[i][j] + 1)
 
-        print(dp)
-
-    if dp[-1][-1] == 0:
+    if dp[-1][-1] > 100:
         print(-1)
     else:
-        print(dp[-1][-2])
+        print(dp[-1][-1])
     
 
 if __name__=='__main__':
