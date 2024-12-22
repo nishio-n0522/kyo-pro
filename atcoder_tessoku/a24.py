@@ -1,20 +1,23 @@
+import bisect
+
 def main():
     N = int(input())
 
     A = list(map(int, input().split()))
 
-    dp = [0] * (N+1)
-    L = [None] * (N+1)
-    
-    dp[1] = 1
-    L[1] = A[0]
+    LEN = 0
+    L = []
 
-    for i in range(1, N):
-        
+    for a in A:
+        pos = bisect.bisect_left(L, a)
+        if pos >= LEN:
+            L.append(a)
+            LEN += 1
+        else:
+            L[pos] = a
 
-        L[i] = A[i]
 
-    print(max(dp))
+    print(LEN)
 
 if __name__=='__main__':
     main()
