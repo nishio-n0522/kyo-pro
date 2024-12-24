@@ -8,7 +8,7 @@ def sub_calc(x: int, waru: int):
             result = result % waru
     return result
 
-def main():
+def _main():
     waru = 10**9 + 7
 
     a, b = map(int, input().split())
@@ -28,6 +28,20 @@ def main():
 
     print(result % waru)
 
+
+def main():
+    waru = 10**9 + 7
+
+    a, b = map(int, input().split())
+
+    p = a
+    result = 1
+    for i in range(30):
+        if b // (2 ** i) % 2 == 1:      # 10進数を2進数に変換する考えをうまく取り込んでいる  
+            result = result * p % waru
+        p = p ** 2 % waru
+    
+    print(result)
 
 if __name__=='__main__':
     main()
